@@ -3,7 +3,7 @@
  * Michael Buffone
  * January 10th, 2020
  * 
- * This class will be used to make the "mouse" and "exit" location objects
+ * This class will be used to add attributes to every point in the maze
  */
 
 public class KeyPoint {

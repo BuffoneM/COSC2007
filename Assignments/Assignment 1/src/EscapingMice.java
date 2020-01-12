@@ -1,4 +1,3 @@
-
 /*
  * Assignment 1
  * Michael Buffone
@@ -7,6 +6,7 @@
  * This class will use a backtracking algorithm to determine if the mouse can
  * escape the maze
  */
+
 import java.io.*;
 import java.util.Scanner;
 
@@ -28,12 +28,11 @@ public class EscapingMice {
 
 		// ****** Maze 3 ******
 		instructions("testMaze3.txt");
-		
+
 		// ****** Maze 4 ******
 		instructions("testMaze4.txt");
 
-		// Modify these four lines with the getX and getY functions to test the board
-		// "coordination"
+		// Modify these four lines with getX and getY to test the board "coordination"
 		// - it may seem confusing, but it makes sense once you play around with it
 		// System.out.println("\n" + mouse.getX());
 		// System.out.println(mouse.getY() + "\n---------");
@@ -47,7 +46,6 @@ public class EscapingMice {
 
 		// Create the file object and read the data into the arrays
 		readFile(new File(fileName));
-
 		printInfo(board);
 		printBoard(board);
 
@@ -87,7 +85,6 @@ public class EscapingMice {
 							exit = new KeyPoint(j, i, 'e');
 						board[i][j] = new KeyPoint(j, i, curr.charAt(0));
 						solutionBoard[i][j] = new KeyPoint(j, i, curr.charAt(0));
-
 					}
 				}
 
@@ -144,10 +141,9 @@ public class EscapingMice {
 					solutionBoard[curCell.getY()][curCell.getX() - 1].setVal('.');
 					cellStack.push(board[curCell.getY()][curCell.getX() - 1]);
 				}
-			} catch(Exception e) {
+			} catch (Exception e) {
 				System.out.println("Issue with the board boundaries detected @ " + curCell);
 			}
-			
 
 			//cellStack.print("Cells");
 
@@ -156,8 +152,11 @@ public class EscapingMice {
 				return false;
 			else {
 				try {
+					//if(solutionBoard[curCell.getY()][curCell.getX()].getVal() == '.') {
+					//	solutionBoard[curCell.getY()][curCell.getX()].setVal('0');
+					//}
 					curCell = cellStack.pop();
-					//solutionBoard[curCell.getY()][curCell.getX()]
+					
 				} catch (Exception e) {
 					System.out.println("Error popping the cell stack!");
 				}
@@ -180,8 +179,8 @@ public class EscapingMice {
 	}
 
 	public static void printInfo(KeyPoint[][] board) {
-		System.out.println("Mouse location: " + mouse.toString());
-		System.out.println("Exit location:  " + exit.toString());
+		System.out.println("Mouse location: " + mouse);
+		System.out.println("Exit location:  " + exit);
 		System.out.println("Row amount: " + board.length + ", Column amount: " + board[0].length);
 	}
 
