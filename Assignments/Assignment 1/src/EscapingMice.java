@@ -20,17 +20,33 @@ public class EscapingMice {
 
 	public static void main(String[] args) {
 
+		Scanner in = new Scanner(System.in);
+		while(true) {
+			
+			System.out.print("Enter a filename that contains a maze (0 to exit): ");
+			String input = in.nextLine();
+			if(input.equals("0")) {
+				System.out.println("Exiting...");
+				System.exit(0);
+			}
+			else {
+				System.out.println();
+				instructions(input);
+			}	
+		}
+		
+		
 		// ****** Maze 1 ******
-		instructions("testMaze.txt");
+		//instructions("testMaze.txt");
 
 		// ****** Maze 2 ******
-		instructions("testMaze2.txt");
+		//instructions("testMaze2.txt");
 
 		// ****** Maze 3 ******
-		instructions("testMaze3.txt");
+		//instructions("testMaze3.txt");
 
 		// ****** Maze 4 ******
-		instructions("testMaze4.txt");
+		//instructions("testMaze4.txt");
 
 		// Modify these four lines with getX and getY to test the board "coordination"
 		// - it may seem confusing, but it makes sense once you play around with it
@@ -45,7 +61,13 @@ public class EscapingMice {
 	public static void instructions(String fileName) {
 
 		// Create the file object and read the data into the arrays
-		readFile(new File(fileName));
+		File file = new File(fileName);
+		if(!file.exists()) {
+			System.out.println("The file does not exist...\n");
+			return;
+		}
+		
+		readFile(file);
 		printInfo(board);
 		printBoard(board);
 
@@ -63,6 +85,7 @@ public class EscapingMice {
 	public static void readFile(File file) {
 		// Attempt scanner connection to the file
 		try {
+			
 			Scanner input = new Scanner(file);
 
 			try {
@@ -93,8 +116,8 @@ public class EscapingMice {
 				System.exit(0);
 			}
 			input.close();
-		} catch (FileNotFoundException fnfe) {
-			System.out.println("Error reading the data file!");
+		} catch (IOException ioe) {
+			System.out.println(ioe.getMessage());
 		}
 	}
 
@@ -152,9 +175,7 @@ public class EscapingMice {
 				return false;
 			else {
 				try {
-					//if(solutionBoard[curCell.getY()][curCell.getX()].getVal() == '.') {
-					//	solutionBoard[curCell.getY()][curCell.getX()].setVal('0');
-					//}
+
 					curCell = cellStack.pop();
 					
 				} catch (Exception e) {
