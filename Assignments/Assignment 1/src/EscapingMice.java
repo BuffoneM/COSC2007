@@ -79,6 +79,7 @@ public class EscapingMice {
 		}
 
 		System.out.println("\n-----------------------------\n");
+		
 
 	}
 
