@@ -79,6 +79,7 @@ public class EscapingMice {
 		}
 
 		System.out.println("\n-----------------------------\n");
+		
 
 	}
 
@@ -168,7 +169,7 @@ public class EscapingMice {
 				System.out.println("Issue with the board boundaries detected @ " + curCell);
 			}
 
-			//cellStack.print("Cells");
+			cellStack.print("Cells");
 
 			// Check if the stack is empty - if it is a solution cannot be found
 			if (cellStack.isEmpty())
