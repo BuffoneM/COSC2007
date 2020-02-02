@@ -1,6 +1,6 @@
 
 public class BinaryTreeBasis {
-	private class WordNode {
+	protected class WordNode {
 		// Data members
 		private String item;
 		private WordNode left, right;
@@ -49,7 +49,7 @@ public class BinaryTreeBasis {
 		}
 	
 	}
-	private WordNode root;
+	protected WordNode root;
 	
 	// ****** Binary Tree Constructors and Methods ******
 	// Constructors

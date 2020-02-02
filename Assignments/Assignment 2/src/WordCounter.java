@@ -15,7 +15,7 @@ public class WordCounter {
 
 	// Data members for the board
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws TreeException {
 
 		/*
 		 * Scanner in = new Scanner(System.in); while(true) {
@@ -30,7 +30,11 @@ public class WordCounter {
 		//instructions("a2data.txt");
 
 		// ****** File 2 ******
-		instructions("a2data2.txt");
+		//instructions("a2data2.txt");
+		
+		BinaryTree bt1 = new BinaryTree("1");
+		bt1.preOrderPrint(bt1.getRoot());
+	
 
 	}
 
