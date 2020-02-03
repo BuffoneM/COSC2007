@@ -1,80 +1,121 @@
 
 public class BinaryTreeBasis {
-	protected class WordNode {
+	private class WordNode {
 		// Data members
 		private String item;
 		private WordNode left, right;
 		private int count;
 
 		// Constructors
-		public WordNode() {
-			item = "";
-			left = null;
-			right = null;
-			count = 0;
-		}
 		public WordNode(String item) {
 			this.item = item;
-			left = null;
-			right = null;
 			count = 1;
 		}
+
 		public WordNode(String item, WordNode left, WordNode right) {
 			this.item = item;
 			this.left = left;
 			this.right = right;
 			count = 1;
 		}
-		
+
 		// Getters and Setters
-		public String getItem() { 
+		public String getItem() {
 			return item;
 		}
+
 		public void setItem(String item) {
 			this.item = item;
 		}
-		
+
 		public WordNode getLeft() {
-			return left;
+			return this.left;
 		}
+
 		public void setLeft(WordNode left) {
 			this.left = left;
 		}
-		
+
 		public WordNode getRight() {
-			return right;
+			return this.right;
 		}
+
 		public void setRight(WordNode right) {
 			this.right = right;
 		}
-	
+
 	}
-	protected WordNode root;
-	
-	// ****** Binary Tree Constructors and Methods ******
-	// Constructors
-	public BinaryTreeBasis() {
-		root = null;
+
+	private WordNode root;
+
+	// ****** Binary Tree Methods ******
+
+	// Add Methods
+	public void add(String item) {
+		root = addWord(item, root);
 	}
-	public BinaryTreeBasis(String rootItem) {
-		root = new WordNode(rootItem, null, null);
+
+	private WordNode addWord(String item, WordNode rootNode) {
+		// If the tree is empty
+		if (rootNode == null)
+			return new WordNode(item);
+
+		// Check if the rootNode's String is > the item
+		if (rootNode.item.compareTo(item) == 1) {
+			rootNode.setLeft(addWord(item, rootNode.getLeft()));
+		}
+
+		// Check if the rootNode's String is < the item
+		if (rootNode.item.compareTo(item) == -1) {
+			rootNode.setRight(addWord(item, rootNode.getRight()));
+		}
+
+		// Check if the rootNode's String is == the item
+		if (rootNode.item.compareTo(item) == 0) {
+			rootNode.count++;
+		}
+		
+		return rootNode;
 	}
-	
-	// Methods
-	public boolean isEmpty() {
-		return root == null;
+
+	// Count Methods
+	public int countNodes() {
+		return countNodes(root);
 	}
-	public void setEmpty() {
-		root = null;
+
+	private int countNodes(WordNode rootNode) {
+		if (rootNode != null) {
+			return 1 + countNodes(rootNode.getLeft()) + countNodes(rootNode.getRight());
+		}
+		return 0;
 	}
-	
-	public String getRootItem() throws TreeException {
-		if(isEmpty()) throw new TreeException("Cannot get item because root == null");
-		else return root.getItem();
+
+	// Count 4 Letter Word Methods
+	public int countFourLetters() {
+		return countFourLetters(root);
 	}
-	public WordNode getRoot() {
-		return root;
+
+	private int countFourLetters(WordNode rootNode) {
+		if (rootNode != null) {
+			if (rootNode.item.length() == 4)
+				return 1 + countNodes(rootNode.getLeft()) + countNodes(rootNode.getRight());
+			else
+				return 0 + countNodes(rootNode.getLeft()) + countNodes(rootNode.getRight());
+		}
+		return 0;
+	}
+
+	// Print Tree Methods
+	public void printTree() {
+		printTree(root);
+	}
+
+	private void printTree(WordNode rootNode) {
+		if (rootNode != null) {
+			System.out.print(rootNode.getItem() + " ");
+			printTree(rootNode.getLeft());
+			printTree(rootNode.getRight());
+		}
 	}
 
 }
-

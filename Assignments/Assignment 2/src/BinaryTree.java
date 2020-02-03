@@ -1,4 +1,4 @@
-
+/*
 public class BinaryTree extends BinaryTreeBasis {
 
 	// ****** Constructors and methods ******
@@ -93,29 +93,9 @@ public class BinaryTree extends BinaryTreeBasis {
 		//if(!nodeExists())
 	}
 
-	public boolean nodeExists(WordNode rootNode, String key) throws TreeException {
-		System.out.println("Running...");
-		if (isEmpty())
-			return false;
-		else if (rootNode.getItem().equals(key))
-			return true;
-		else if (nodeExists(rootNode.getLeft(), key))
-			return true;
-		else if (nodeExists(rootNode.getRight(), key))
-			return true;
-		else return false;
-	}
-
-	public void preOrderPrint(WordNode rootNode) throws TreeException {
-		if (rootNode != null) {
-			System.out.print(rootNode.getItem() + " ");
-			preOrderPrint(rootNode.getLeft());
-			preOrderPrint(rootNode.getRight());
-		}
-	}
-
 	public int countNodes(WordNode rootNode) throws TreeException {
 
 		return 0;
 	}
 }
+*/

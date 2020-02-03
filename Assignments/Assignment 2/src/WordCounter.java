@@ -31,15 +31,11 @@ public class WordCounter {
 
 		// ****** File 2 ******
 		//instructions("a2data2.txt");
-		BinaryTree bt = new BinaryTree();
-		bt.setRootItem("1");
-		bt.preOrderPrint(bt.getRoot());
-		System.out.println();
-		bt.attachLeft("2");
-		bt.attachRight("3");
-		bt.preOrderPrint(bt.getRoot());
-		System.out.println(bt.nodeExists(bt.getRoot(), "3"));
-		
+		BinaryTreeBasis bt = new BinaryTreeBasis();
+		bt.add("1");
+		bt.add("2");
+		bt.add("3");
+		bt.printTree();
 
 	}
 
