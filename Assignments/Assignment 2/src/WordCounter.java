@@ -16,18 +16,10 @@ public class WordCounter {
 	public static void main(String[] args) throws TreeException {
 
 		// ****** File 1 ******
-		// instructions("a2data.txt");
+		//instructions("a2data.txt");
 
 		// ****** File 2 ******
-		//instructions("a2data2.txt");
-
-		BinaryTree bt = new BinaryTree();
-		bt.add("1");
-		bt.add("2");
-		bt.add("3");
-		bt.add("4");
-		bt.printTree();
-		//System.out.println("2".compareTo("2"));
+		instructions("a2data2.txt");
 
 	}
 
@@ -41,11 +33,20 @@ public class WordCounter {
 			return;
 		}
 
+		// Create the binary tree from the file
 		BinaryTree wordsToAdd = parseFile(file);
-		wordsToAdd.printTree();
+		System.out.println("There are " + wordsToAdd.countNodes() + " words in the file.");
+		int num4l = wordsToAdd.countFourLetters();
+		System.out.println(
+				"There " + (num4l == 1 ? "is " + num4l + " four letter word" : "are " + num4l 
+						+ " four letter words") + " in the file.");
 
-		System.out.println("\n-----------------------------\n");
-
+		System.out.println("\n----------In Order----------");
+		wordsToAdd.printInTree();
+		System.out.println("\n----------Pre Order----------");
+		wordsToAdd.printPreTree();
+		System.out.println("\n\n----------Post Order----------");
+		wordsToAdd.printPostTree();
 	}
 
 	public static BinaryTree parseFile(File file) {

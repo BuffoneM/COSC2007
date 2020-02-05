@@ -24,10 +24,6 @@ public class BinaryTree {
 			return item;
 		}
 
-		public void setItem(String item) {
-			this.item = item;
-		}
-
 		public WordNode getLeft() {
 			return this.left;
 		}
@@ -42,6 +38,14 @@ public class BinaryTree {
 
 		public void setRight(WordNode right) {
 			this.right = right;
+		}
+		
+		public void setCount(int count) {
+			this.count = count;
+		}
+		
+		public int getCount() {
+			return count;
 		}
 
 	}
@@ -58,26 +62,26 @@ public class BinaryTree {
 	private WordNode addWord(String item, WordNode rootNode) {
 		// If the tree is empty
 		if (rootNode == null) {
-			System.out.println("RootNode is " + item);
+			//System.out.println("RootNode is " + item);
 			return new WordNode(item);
 		}
 
 		// Check if the rootNode's String is < the item
-		if (rootNode.item.compareTo(item) == 1) {
-			System.out.println("Adding " + item + " to the left");
+		if (rootNode.item.compareTo(item) >= 1) {
+			//System.out.println("Adding " + item + " to the left");
 			rootNode.setLeft(addWord(item, rootNode.getLeft()));
 		}
 
 		// Check if the rootNode's String is > the item
-		if (rootNode.item.compareTo(item) == -1) {
-			System.out.println("Adding " + item + " to the right");
+		if (rootNode.item.compareTo(item) <= -1) {
+			//System.out.println("Adding " + item + " to the right");
 			rootNode.setRight(addWord(item, rootNode.getRight()));
 		}
 
 		// Check if the rootNode's String is == the item
 		if (rootNode.item.compareTo(item) == 0) {
-			System.out.println("Incrementing counter for " + item);
-			rootNode.count++;
+			//System.out.println("Incrementing counter for " + item);
+			rootNode.setCount(rootNode.getCount() + 1);
 		}
 		
 		return rootNode;
@@ -103,23 +107,50 @@ public class BinaryTree {
 	private int countFourLetters(WordNode rootNode) {
 		if (rootNode != null) {
 			if (rootNode.item.length() == 4)
-				return 1 + countNodes(rootNode.getLeft()) + countNodes(rootNode.getRight());
+				return 1 + countFourLetters(rootNode.getLeft()) + countFourLetters(rootNode.getRight());
 			else
-				return 0 + countNodes(rootNode.getLeft()) + countNodes(rootNode.getRight());
+				return 0 + countFourLetters(rootNode.getLeft()) + countFourLetters(rootNode.getRight());
 		}
 		return 0;
 	}
 
 	// Print Tree Methods
-	public void printTree() {
-		printTree(root);
+	// In order
+	public void printInTree() {
+		printInTree(root);
 	}
 
-	private void printTree(WordNode rootNode) {
+	private void printInTree(WordNode rootNode) {
+		if (rootNode != null) {
+			printInTree(rootNode.getLeft());
+			System.out.println(rootNode.getItem() + ": " + rootNode.getCount());
+			printInTree(rootNode.getRight());
+		}
+	}
+	
+	// Pre order
+	public void printPreTree() {
+		printPreTree(root);
+	}
+
+	private void printPreTree(WordNode rootNode) {
 		if (rootNode != null) {
 			System.out.print(rootNode.getItem() + " ");
-			printTree(rootNode.getLeft());
-			printTree(rootNode.getRight());
+			printPreTree(rootNode.getLeft());
+			printPreTree(rootNode.getRight());
+		}
+	}
+	
+	// Post order
+	public void printPostTree() {
+		printPostTree(root);
+	}
+
+	private void printPostTree(WordNode rootNode) {
+		if (rootNode != null) {
+			printPostTree(rootNode.getLeft());
+			printPostTree(rootNode.getRight());
+			System.out.print(rootNode.getItem() + " ");
 		}
 	}
 
