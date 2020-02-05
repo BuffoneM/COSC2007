@@ -13,29 +13,21 @@ import java.util.Scanner;
 
 public class WordCounter {
 
-	// Data members for the board
-
 	public static void main(String[] args) throws TreeException {
 
-		/*
-		 * Scanner in = new Scanner(System.in); while(true) {
-		 * 
-		 * System.out.print("Enter a filename that contains a maze (0 to exit): ");
-		 * String input = in.nextLine(); if(input.equals("0")) {
-		 * System.out.println("Exiting..."); System.exit(0); } else {
-		 * System.out.println(); instructions(input); } }
-		 */
-
 		// ****** File 1 ******
-		//instructions("a2data.txt");
+		// instructions("a2data.txt");
 
 		// ****** File 2 ******
 		//instructions("a2data2.txt");
-		BinaryTreeBasis bt = new BinaryTreeBasis();
+
+		BinaryTree bt = new BinaryTree();
 		bt.add("1");
 		bt.add("2");
 		bt.add("3");
+		bt.add("4");
 		bt.printTree();
+		//System.out.println("2".compareTo("2"));
 
 	}
 
@@ -49,45 +41,41 @@ public class WordCounter {
 			return;
 		}
 
-		String wordsToAdd = parseFile(file);
-		System.out.println(wordsToAdd);
+		BinaryTree wordsToAdd = parseFile(file);
+		wordsToAdd.printTree();
 
 		System.out.println("\n-----------------------------\n");
 
 	}
 
-	public static String parseFile(File file) {
+	public static BinaryTree parseFile(File file) {
+
 		// Attempt scanner connection to the file
 		try {
-
 			Scanner input = new Scanner(file);
-			String wordsToAdd = "";
-			
-			while (input.hasNext()) {
+			BinaryTree wordTree = new BinaryTree();
 
-				// *** Collect the current word, lower-case it, and add it to "wordsToAdd" String ***
+			while (input.hasNext()) {
 				String curr = input.next();
-				
-				// If curr doesn't have a single letter, go to the next word
-				if(!containsLetters(curr)) continue;
-				
+
+				// If curr doesn't have a letter, go to the next word
+				if (!containsLetters(curr))
+					continue;
+
+				// Remove everything but hyphens and apostrophes from curr
 				curr = curr.toLowerCase();
-				// Remove all unnecessary chars in the word
 				curr = curr.replaceAll("[^a-z^'^-]", "");
 
-				// Separate the word by the dash and add both halves to the String
+				// Separate the word by the dash and add both halves to the tree
 				if (curr.contains("-")) {
-					wordsToAdd += (curr.substring(0, curr.indexOf("-")) + " ");
-					wordsToAdd += (curr.substring(curr.indexOf("-") + 1, curr.length()) + " ");
-				} else {
-					wordsToAdd += (curr + " ");
-				}
+					wordTree.add(curr.substring(0, curr.indexOf("-")));
+					wordTree.add(curr.substring(curr.indexOf("-") + 1, curr.length()));
 
+				} else
+					wordTree.add(curr);
 			}
-			
-			// Remove all unnecessary spaces to clean up the String
 			input.close();
-			return wordsToAdd;
+			return wordTree;
 
 		} catch (IOException ioe) {
 			System.out.println(ioe.getMessage());
@@ -102,10 +90,6 @@ public class WordCounter {
 				return true;
 		}
 		return false;
-	}
-
-	public static void printTree() {
-
 	}
 
 }

@@ -1,101 +1,126 @@
-/*
-public class BinaryTree extends BinaryTreeBasis {
 
-	// ****** Constructors and methods ******
-	public BinaryTree() {
-		super("");
-	}
+public class BinaryTree {
+	private class WordNode {
+		// Data members
+		private String item;
+		private WordNode left, right;
+		private int count;
 
-	public BinaryTree(String rootItem) {
-		super(rootItem);
-	}
-
-	protected BinaryTree(WordNode rootNode) {
-		root = rootNode;
-	}
-
-	public BinaryTree(String rootItem, BinaryTree leftTree, BinaryTree rightTree) {
-		root = new WordNode(rootItem, null, null);
-		try {
-			attachLeftSubtree(leftTree);
-			attachRightSubtree(rightTree);
-		} catch (TreeException e) {
-			System.out.println(e.getMessage());
+		// Constructors
+		public WordNode(String item) {
+			this.item = item;
+			count = 1;
 		}
-	}
 
-	// ****** Methods ******
-	public void setRootItem(String newItem) {
-		if (root == null) {
-			root = new WordNode(newItem, null, null);
-		} else {
-			root.setItem(newItem);
+		public WordNode(String item, WordNode left, WordNode right) {
+			this.item = item;
+			this.left = left;
+			this.right = right;
+			count = 1;
 		}
-	}
 
-	// *** Attach / detach ***
-	public void attachLeft(String newItem) {
-		if (!isEmpty() && root.getLeft() == null) {
-			root.setLeft(new WordNode(newItem, null, null));
+		// Getters and Setters
+		public String getItem() {
+			return item;
 		}
-	}
 
-	public void attachRight(String newItem) {
-		if (!isEmpty() && root.getRight() == null) {
-			root.setRight(new WordNode(newItem, null, null));
+		public void setItem(String item) {
+			this.item = item;
 		}
-	}
 
-	public void attachLeftSubtree(BinaryTree leftTree) throws TreeException {
-		if (isEmpty())
-			throw new TreeException("Cannot attach left subtree to empty tree...");
-		else if (root.getLeft() != null)
-			throw new TreeException("Cannot overwrite left subtree...");
-		else {
-			root.setLeft(leftTree.root);
-			leftTree.setEmpty();
+		public WordNode getLeft() {
+			return this.left;
 		}
-	}
 
-	public void attachRightSubtree(BinaryTree rightTree) throws TreeException {
-		if (isEmpty())
-			throw new TreeException("Cannot attach right subtree to empty tree...");
-		else if (root.getRight() != null)
-			throw new TreeException("Cannot overwrite right subtree...");
-		else {
-			root.setRight(rightTree.root);
-			rightTree.setEmpty();
+		public void setLeft(WordNode left) {
+			this.left = left;
 		}
-	}
 
-	public BinaryTree detachLeftSubtree() throws TreeException {
-		if (isEmpty())
-			throw new TreeException("Cannot detach empty tree...");
-		else {
-			BinaryTree leftTree = new BinaryTree(root.getLeft());
-			root.setLeft(null);
-			return leftTree;
+		public WordNode getRight() {
+			return this.right;
 		}
-	}
 
-	public BinaryTree detachRightSubtree() throws TreeException {
-		if (isEmpty())
-			throw new TreeException("Cannot detach empty tree...");
-		else {
-			BinaryTree rightTree = new BinaryTree(root.getRight());
-			root.setRight(null);
-			return rightTree;
+		public void setRight(WordNode right) {
+			this.right = right;
 		}
+
 	}
 
-	// *** Utility ***
-	public void add(String newWord) {
-		//if(!nodeExists())
+	private WordNode root;
+
+	// ****** Binary Tree Methods ******
+
+	// Add Methods
+	public void add(String item) {
+			root = addWord(item, root);
 	}
 
-	public int countNodes(WordNode rootNode) throws TreeException {
+	private WordNode addWord(String item, WordNode rootNode) {
+		// If the tree is empty
+		if (rootNode == null) {
+			System.out.println("RootNode is " + item);
+			return new WordNode(item);
+		}
 
+		// Check if the rootNode's String is < the item
+		if (rootNode.item.compareTo(item) == 1) {
+			System.out.println("Adding " + item + " to the left");
+			rootNode.setLeft(addWord(item, rootNode.getLeft()));
+		}
+
+		// Check if the rootNode's String is > the item
+		if (rootNode.item.compareTo(item) == -1) {
+			System.out.println("Adding " + item + " to the right");
+			rootNode.setRight(addWord(item, rootNode.getRight()));
+		}
+
+		// Check if the rootNode's String is == the item
+		if (rootNode.item.compareTo(item) == 0) {
+			System.out.println("Incrementing counter for " + item);
+			rootNode.count++;
+		}
+		
+		return rootNode;
+	}
+
+	// Count Methods
+	public int countNodes() {
+		return countNodes(root);
+	}
+
+	private int countNodes(WordNode rootNode) {
+		if (rootNode != null) {
+			return 1 + countNodes(rootNode.getLeft()) + countNodes(rootNode.getRight());
+		}
 		return 0;
 	}
+
+	// Count 4 Letter Word Methods
+	public int countFourLetters() {
+		return countFourLetters(root);
+	}
+
+	private int countFourLetters(WordNode rootNode) {
+		if (rootNode != null) {
+			if (rootNode.item.length() == 4)
+				return 1 + countNodes(rootNode.getLeft()) + countNodes(rootNode.getRight());
+			else
+				return 0 + countNodes(rootNode.getLeft()) + countNodes(rootNode.getRight());
+		}
+		return 0;
+	}
+
+	// Print Tree Methods
+	public void printTree() {
+		printTree(root);
+	}
+
+	private void printTree(WordNode rootNode) {
+		if (rootNode != null) {
+			System.out.print(rootNode.getItem() + " ");
+			printTree(rootNode.getLeft());
+			printTree(rootNode.getRight());
+		}
+	}
+
 }
-*/
