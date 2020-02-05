@@ -14,12 +14,26 @@ import java.util.Scanner;
 public class WordCounter {
 
 	public static void main(String[] args) throws TreeException {
+		
+		Scanner in = new Scanner(System.in);
+		while (true) {
+
+			System.out.print("Enter a filename (0 to exit): ");
+			String input = in.nextLine();
+			if (input.equals("0")) {
+				System.out.println("Exiting...");
+				System.exit(0);
+			} else {
+				System.out.println();
+				instructions(input);
+			}
+		}
 
 		// ****** File 1 ******
 		//instructions("a2data.txt");
 
 		// ****** File 2 ******
-		instructions("a2data2.txt");
+		// instructions("a2data2.txt");
 
 	}
 
@@ -38,15 +52,13 @@ public class WordCounter {
 		System.out.println("There are " + wordsToAdd.countNodes() + " words in the file.");
 		int num4l = wordsToAdd.countFourLetters();
 		System.out.println(
-				"There " + (num4l == 1 ? "is " + num4l + " four letter word" : "are " + num4l 
-						+ " four letter words") + " in the file.");
+				"There " + (num4l == 1 ? "is " + num4l + " four letter word" : "are " + num4l + " four letter words")
+						+ " in the file.");
 
 		System.out.println("\n----------In Order----------");
 		wordsToAdd.printInTree();
-		System.out.println("\n----------Pre Order----------");
-		wordsToAdd.printPreTree();
-		System.out.println("\n\n----------Post Order----------");
-		wordsToAdd.printPostTree();
+		
+		System.out.println("\nComplete...\n-----------------------------");
 	}
 
 	public static BinaryTree parseFile(File file) {

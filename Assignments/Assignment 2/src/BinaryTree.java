@@ -86,8 +86,9 @@ public class BinaryTree {
 		
 		return rootNode;
 	}
-
+ 
 	// Count Methods
+	//
 	public int countNodes() {
 		return countNodes(root);
 	}
@@ -100,6 +101,7 @@ public class BinaryTree {
 	}
 
 	// Count 4 Letter Word Methods
+	// 
 	public int countFourLetters() {
 		return countFourLetters(root);
 	}
@@ -115,7 +117,7 @@ public class BinaryTree {
 	}
 
 	// Print Tree Methods
-	// In order
+	// In order traversal
 	public void printInTree() {
 		printInTree(root);
 	}
@@ -123,35 +125,8 @@ public class BinaryTree {
 	private void printInTree(WordNode rootNode) {
 		if (rootNode != null) {
 			printInTree(rootNode.getLeft());
-			System.out.println(rootNode.getItem() + ": " + rootNode.getCount());
+			System.out.printf("%-20s: %d\n", rootNode.getItem(), rootNode.getCount());
 			printInTree(rootNode.getRight());
 		}
 	}
-	
-	// Pre order
-	public void printPreTree() {
-		printPreTree(root);
-	}
-
-	private void printPreTree(WordNode rootNode) {
-		if (rootNode != null) {
-			System.out.print(rootNode.getItem() + " ");
-			printPreTree(rootNode.getLeft());
-			printPreTree(rootNode.getRight());
-		}
-	}
-	
-	// Post order
-	public void printPostTree() {
-		printPostTree(root);
-	}
-
-	private void printPostTree(WordNode rootNode) {
-		if (rootNode != null) {
-			printPostTree(rootNode.getLeft());
-			printPostTree(rootNode.getRight());
-			System.out.print(rootNode.getItem() + " ");
-		}
-	}
-
 }
