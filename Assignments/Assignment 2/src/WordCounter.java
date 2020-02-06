@@ -1,3 +1,4 @@
+
 /*
  * Assignment 2
  * Michael Buffone
@@ -13,11 +14,10 @@ import java.util.Scanner;
 public class WordCounter {
 
 	public static void main(String[] args) throws TreeException {
-		
-		
-		Scanner in = new Scanner(System.in);
-		while (true) {
 
+		Scanner in = new Scanner(System.in);
+
+		while (true) {
 			System.out.print("Enter a filename (0 to exit): ");
 			String input = in.nextLine();
 			if (input.equals("0")) {
@@ -28,14 +28,13 @@ public class WordCounter {
 				instructions(input);
 			}
 		}
-		
 
 		// ****** File 1 ******
 		//instructions("a2data.txt");
 
 		// ****** File 2 ******
 		//instructions("a2data2.txt");
-		
+
 		// ****** File 3 ******
 		//instructions("a2data3.txt");
 
@@ -54,21 +53,20 @@ public class WordCounter {
 
 		// Create the binary tree from the file
 		BinaryTree wordsToAdd = parseFile(file);
-		System.out.println("There are " + wordsToAdd.countNodes() + " words in the file.");
+		System.out.println("There are " + wordsToAdd.countNodes() + " unique words in the file.");
 		int num4l = wordsToAdd.countFourLetters();
-		System.out.println(
-				"There " + (num4l == 1 ? "is " + num4l + " four letter word" : "are " + num4l + " four letter words")
-						+ " in the file.");
+		System.out.println("There " + (num4l == 1 ? "is " + num4l + " unique four letter word"
+				: "are " + num4l + " unique four letter words") + " in the file.");
 
 		System.out.println("\n----------In Order----------");
 		wordsToAdd.printInTree();
 		/*
-		System.out.println("\n----------Pre Order----------");
-		wordsToAdd.printPreTree();
-		
-		System.out.println("\n----------Post Order----------");
-		wordsToAdd.printPostTree();
-		*/
+		 * System.out.println("\n----------Pre Order----------");
+		 * wordsToAdd.printPreTree();
+		 * 
+		 * System.out.println("\n----------Post Order----------");
+		 * wordsToAdd.printPostTree();
+		 */
 		System.out.println("\nComplete...\n-----------------------------");
 	}
 
