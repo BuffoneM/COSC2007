@@ -1,3 +1,11 @@
+/*
+ * Assignment 2
+ * Michael Buffone
+ * February 1st, 2020
+ * 
+ * This class will create a binary tree and implement
+ * the appropriate methods and wordNode
+ */
 
 public class BinaryTree {
 	private class WordNode {
@@ -88,7 +96,7 @@ public class BinaryTree {
 	}
  
 	// Count Methods
-	//
+	// Pre order traversal
 	public int countNodes() {
 		return countNodes(root);
 	}
@@ -101,7 +109,7 @@ public class BinaryTree {
 	}
 
 	// Count 4 Letter Word Methods
-	// 
+	// Post order traversal
 	public int countFourLetters() {
 		return countFourLetters(root);
 	}
@@ -109,14 +117,14 @@ public class BinaryTree {
 	private int countFourLetters(WordNode rootNode) {
 		if (rootNode != null) {
 			if (rootNode.item.length() == 4)
-				return 1 + countFourLetters(rootNode.getLeft()) + countFourLetters(rootNode.getRight());
+				return countFourLetters(rootNode.getLeft()) + countFourLetters(rootNode.getRight()) + 1;
 			else
-				return 0 + countFourLetters(rootNode.getLeft()) + countFourLetters(rootNode.getRight());
+				return countFourLetters(rootNode.getLeft()) + countFourLetters(rootNode.getRight());
 		}
 		return 0;
 	}
 
-	// Print Tree Methods
+	// *** Print Tree Methods ***
 	// In order traversal
 	public void printInTree() {
 		printInTree(root);
@@ -127,6 +135,32 @@ public class BinaryTree {
 			printInTree(rootNode.getLeft());
 			System.out.printf("%-20s: %d\n", rootNode.getItem(), rootNode.getCount());
 			printInTree(rootNode.getRight());
+		}
+	}
+	
+	// Pre order traversal
+	public void printPreTree() {
+		printPreTree(root);
+	}
+	
+	private void printPreTree(WordNode rootNode) {
+		if(rootNode != null) {
+			System.out.printf("%-20s: %d\n", rootNode.getItem(), rootNode.getCount());
+			printPreTree(rootNode.getLeft());
+			printPreTree(rootNode.getRight());
+		}
+	}
+	
+	// Post order traversal
+	public void printPostTree() {
+		printPostTree(root);
+	}
+	
+	private void printPostTree(WordNode rootNode) {
+		if(rootNode != null) {
+			printPostTree(rootNode.getLeft());
+			printPostTree(rootNode.getRight());
+			System.out.printf("%-20s: %d\n", rootNode.getItem(), rootNode.getCount());
 		}
 	}
 }

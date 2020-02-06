@@ -1,11 +1,10 @@
-
 /*
  * Assignment 2
  * Michael Buffone
  * February 1st, 2020
  * 
- * This class will create a binary search tree and count the amount of each word
- * in an input file
+ * This class will create a binary tree and print, count, and filter
+ * each word in an input file
  */
 
 import java.io.*;
@@ -14,6 +13,7 @@ import java.util.Scanner;
 public class WordCounter {
 
 	public static void main(String[] args) throws TreeException {
+		
 		
 		Scanner in = new Scanner(System.in);
 		while (true) {
@@ -28,12 +28,16 @@ public class WordCounter {
 				instructions(input);
 			}
 		}
+		
 
 		// ****** File 1 ******
 		//instructions("a2data.txt");
 
 		// ****** File 2 ******
-		// instructions("a2data2.txt");
+		//instructions("a2data2.txt");
+		
+		// ****** File 3 ******
+		//instructions("a2data3.txt");
 
 	}
 
@@ -44,6 +48,7 @@ public class WordCounter {
 		File file = new File(fileName);
 		if (!file.exists()) {
 			System.out.println("The file does not exist...\n");
+			System.out.println("Complete...\n-----------------------------");
 			return;
 		}
 
@@ -57,7 +62,13 @@ public class WordCounter {
 
 		System.out.println("\n----------In Order----------");
 		wordsToAdd.printInTree();
+		/*
+		System.out.println("\n----------Pre Order----------");
+		wordsToAdd.printPreTree();
 		
+		System.out.println("\n----------Post Order----------");
+		wordsToAdd.printPostTree();
+		*/
 		System.out.println("\nComplete...\n-----------------------------");
 	}
 
