@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="2d0e6bf5-727d-4409-88f6-887beed55adf" name="Default Changelist" comment="" />
+    <list default="true" id="2d0e6bf5-727d-4409-88f6-887beed55adf" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -22,7 +24,7 @@
   <component name="ProjectId" id="1XXDHkqTAnurvj3PNRsNz4Mq8Ub" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
-    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="flattenPackages" value="true" />
     <option name="showExcludedFiles" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
@@ -30,6 +32,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../../COSC3127/Assignments/Assignment 2" />
     <property name="restartRequiresConfirmation" value="false" />
     <property name="settings.editor.selected.configurable" value="preferences.editor" />
   </component>
@@ -65,6 +68,8 @@
       <updated>1581183459486</updated>
       <workItem from="1581183476090" duration="1430000" />
       <workItem from="1581184974330" duration="92000" />
+      <workItem from="1581185132915" duration="135000" />
+      <workItem from="1581185605439" duration="166000" />
     </task>
     <servers />
   </component>
@@ -76,6 +81,10 @@
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
     <state x="872" y="359" key="#Notifications/0.0.2560.1400/2560.360.1920.1040@0.0.2560.1400" timestamp="1581183537273" />
+    <state x="1060" y="402" key="FileChooserDialogImpl" timestamp="1581185756832">
+      <screen x="0" y="0" width="2560" height="1400" />
+    </state>
+    <state x="1060" y="402" key="FileChooserDialogImpl/0.0.2560.1400/2560.360.1920.1040@0.0.2560.1400" timestamp="1581185756832" />
     <state width="2517" height="401" key="GridCell.Tab.0.bottom" timestamp="1581185066085">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
@@ -108,6 +117,10 @@
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
     <state width="2517" height="492" key="GridCell.Tab.1.right/0.0.2560.1400/2560.360.1920.1040@0.0.2560.1400" timestamp="1581184907277" />
+    <state x="945" y="400" key="NewModule_or_Project.wizard" timestamp="1581185709173">
+      <screen x="0" y="0" width="2560" height="1400" />
+    </state>
+    <state x="945" y="400" key="NewModule_or_Project.wizard/0.0.2560.1400/2560.360.1920.1040@0.0.2560.1400" timestamp="1581185709173" />
     <state x="1434" y="337" key="SettingsEditor" timestamp="1581184514919">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
