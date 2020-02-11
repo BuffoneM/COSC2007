@@ -21,7 +21,7 @@ public class EscapingMice {
 	public static void main(String[] args) {
 
 		Scanner in = new Scanner(System.in);
-		/*while(true) {
+		while(true) {
 			
 			System.out.print("Enter a filename that contains a maze (0 to exit): ");
 			String input = in.nextLine();
@@ -33,11 +33,11 @@ public class EscapingMice {
 				System.out.println();
 				instructions(input);
 			}	
-		}*/
+		}
 		
 		
 		// ****** Maze 1 ******
-		instructions("testMaze.txt");
+		//instructions("testMaze.txt");
 
 		// ****** Maze 2 ******
 		//instructions("testMaze2.txt");
@@ -169,7 +169,7 @@ public class EscapingMice {
 				System.out.println("Issue with the board boundaries detected @ " + curCell);
 			}
 
-			cellStack.print("Cells");
+			//cellStack.print("Cells");
 
 			// Check if the stack is empty - if it is a solution cannot be found
 			if (cellStack.isEmpty())
