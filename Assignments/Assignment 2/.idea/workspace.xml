@@ -2,40 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3955d64d-edda-40e4-9913-1b32359d197c" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/../../.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../.idea/COSC2007.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../.idea/misc.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../.idea/modules.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../.idea/vcs.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../.idea/misc.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../.idea/modules.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../.idea/vcs.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Assignment 1/Assignment 1.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Assignment 1/src/EscapingMice.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Assignment 1/src/KeyPoint.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Assignment 1/src/Stack.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Assignment 1/src/StackException.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Assignment 1/src/StackInterface.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Assignments.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../a2data.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../a2data2.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../a2data3.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../out/production/Assignment 1/EscapingMice.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../out/production/Assignment 1/KeyPoint.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../out/production/Assignment 1/Stack$Node.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../out/production/Assignment 1/Stack.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../out/production/Assignment 1/StackException.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../out/production/Assignment 1/StackInterface.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../out/production/Assignment 2/BinaryTree$WordNode.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../out/production/Assignment 2/BinaryTree.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../out/production/Assignment 2/TreeException.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../out/production/Assignment 2/WordCounter.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../testMaze.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../testMaze2.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../testMaze3.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../testMaze4.txt" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -58,6 +25,8 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../../COSC3127/Assignments/Assignment 2" />
+    <property name="restartRequiresConfirmation" value="false" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
@@ -91,6 +60,7 @@
       <updated>1581368316576</updated>
       <workItem from="1581368319771" duration="249000" />
       <workItem from="1581382338121" duration="57000" />
+      <workItem from="1581384053452" duration="49000" />
     </task>
     <servers />
   </component>
@@ -98,26 +68,31 @@
     <option name="version" value="1" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="739" y="275" key="FileChooserDialogImpl" timestamp="1581382375524">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state x="985" y="370" key="FileChooserDialogImpl" timestamp="1581384102188">
+      <screen x="0" y="0" width="2560" height="1400" />
     </state>
     <state x="739" y="275" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1581382375524" />
-    <state width="551" height="495" key="GridCell.Tab.0.bottom" timestamp="1581382395335">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state x="985" y="370" key="FileChooserDialogImpl/0.0.2560.1400/2560.360.1920.1040@0.0.2560.1400" timestamp="1581384102188" />
+    <state width="2517" height="401" key="GridCell.Tab.0.bottom" timestamp="1581384102228">
+      <screen x="0" y="0" width="2560" height="1400" />
     </state>
     <state width="551" height="495" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1581382395335" />
-    <state width="551" height="495" key="GridCell.Tab.0.center" timestamp="1581382395335">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state width="2517" height="401" key="GridCell.Tab.0.bottom/0.0.2560.1400/2560.360.1920.1040@0.0.2560.1400" timestamp="1581384102228" />
+    <state width="2517" height="401" key="GridCell.Tab.0.center" timestamp="1581384102228">
+      <screen x="0" y="0" width="2560" height="1400" />
     </state>
     <state width="551" height="495" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1581382395335" />
-    <state width="551" height="495" key="GridCell.Tab.0.left" timestamp="1581382395335">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state width="2517" height="401" key="GridCell.Tab.0.center/0.0.2560.1400/2560.360.1920.1040@0.0.2560.1400" timestamp="1581384102228" />
+    <state width="2517" height="401" key="GridCell.Tab.0.left" timestamp="1581384102228">
+      <screen x="0" y="0" width="2560" height="1400" />
     </state>
     <state width="551" height="495" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1581382395335" />
-    <state width="551" height="495" key="GridCell.Tab.0.right" timestamp="1581382395335">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state width="2517" height="401" key="GridCell.Tab.0.left/0.0.2560.1400/2560.360.1920.1040@0.0.2560.1400" timestamp="1581384102228" />
+    <state width="2517" height="401" key="GridCell.Tab.0.right" timestamp="1581384102228">
+      <screen x="0" y="0" width="2560" height="1400" />
     </state>
     <state width="551" height="495" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1581382395335" />
+    <state width="2517" height="401" key="GridCell.Tab.0.right/0.0.2560.1400/2560.360.1920.1040@0.0.2560.1400" timestamp="1581384102228" />
     <state x="342" y="141" key="new project wizard" timestamp="1581382394290">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
