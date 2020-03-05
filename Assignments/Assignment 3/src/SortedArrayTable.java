@@ -12,22 +12,90 @@ public class SortedArrayTable<T extends Comparable> {
 
     // Methods
     public void insert(T obj) {
+        // Full dictionary case
         if (size == MAX_SIZE) throw new Dictionary_Full("Dictionary full");
+        if (obj.equals("")) throw new RuntimeException("Empty string entered");
 
-        if (size == 0) {
-            //if (size == 0 || obj.compareTo(items[size-1]) > 1) {
+        // Empty dictionary case or if the obj > last element in the array, add it at the end
+        if (size == 0 || obj.compareTo(items[size - 1]) >= 1) {
             items[size++] = obj;
             return;
         }
 
-        items[size++] = obj;
-        return;
-        // Traverse the list until the item is in the proper location of the array for insertion
+        // If the obj < first element in the array, add it at the front
+        if (obj.compareTo(items[0]) < 0) {
+            // Shift the other elements over by 1 element and insert
+            for (int j = items.length - 2; j >= 0; j--) {
+                items[j + 1] = items[j];
+            }
 
-        // Insert the next element
+            items[0] = obj;
+            size++;
+            return;
+        }
+
+        // Insert the object in it's proper location
+        for (int i = 0; i < size; i++) {
+            if (obj.equals(items[i])) throw new Duplicate_Item_Found("Duplicate item being inserted: " + obj);
+
+            // Look for the case where it is bigger than the already existing string
+            if (obj.compareTo(items[i]) >= 1) {
+
+                // Shift the other elements over by 1 element and insert
+                for (int j = items.length - 2; j >= i; j--) {
+                    items[j + 1] = items[j];
+                }
+
+                items[i + 1] = obj;
+                size++;
+                return;
+            }
+        }
+    }
+
+    public boolean delete(T obj) {
+        if (size == 0) throw new Dictionary_Full("Dictionary is empty");
+
+        // Return the predecessor and successor of obj if obj would have existed
+        try {
+            if(!search(obj)) throw new Element_Not_Found("Element not found");
+        } catch (Element_Not_Found enf) {
+            System.out.println("Element '" + obj + "' not found");
+            System.out.println("Predecessor: " + " | Successor: ");
+            return false;
+        }
+
+        // If the last item is being deleted, delete it and return (no need to shift everything)
+        if (obj.equals(items[size - 1])) {
+            items[size - 1] = null;
+            size -= 1;
+            return true;
+        }
+
+        // Find the element, delete it, and shift every element ahead of it to the left
+        for(int i = 0; i < size; i++) {
+            if(obj.equals(items[i])) {
+
+                items[i] = null;
+                size -= 1;
+
+                for(int j = i; j < size+1; j++) {
+                    items[j] = items[j+1];
+                }
+
+
+                return true;
+            }
+        }
+
+
+
+
+        return false;
     }
 
     public boolean search(T obj) {
+        if (size == 0) throw new Dictionary_Full("Dictionary is empty");
         for (int i = 0; i < size; i++) {
             if (obj.equals(items[i])) return true;
         }
@@ -35,16 +103,11 @@ public class SortedArrayTable<T extends Comparable> {
     }
 
     public void print() {
-        System.out.print("-------------------------------\nPhysical size print:\n[");
+        System.out.print("-------------------------------\n" + toString() + "\nPhysical size print:\n[");
         for (int i = 0; i < MAX_SIZE; i++) {
             System.out.print(items[i] + (i == MAX_SIZE - 1 ? "]\n" : ", "));
         }
-
-        System.out.print("\nLogical size print:\n[");
-        for (int i = 0; i <= size; i++) {
-            System.out.print(items[i] + (i == size ? "]\n" : ", "));
-        }
-        System.out.print("-------------------------------\n");
+        System.out.println("-------------------------------");
     }
 
     public String toString() {
