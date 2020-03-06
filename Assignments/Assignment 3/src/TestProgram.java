@@ -1,30 +1,59 @@
-import java.util.Arrays;
+import java.io.*;
+import java.util.Scanner;
 
 public class TestProgram {
 
     public static void main(String[] args) {
+        /*Scanner in = new Scanner(System.in);
+
+        while (true) {
+            System.out.print("Enter a filename (0 to exit): ");
+            String input = in.nextLine();
+            if (input.equals("0")) {
+                System.out.println("Exiting...");
+                System.exit(0);
+            } else {
+                System.out.println();
+                instructions(input);
+            }
+        }*/
+
+        // ****** File 1 ******
+
+        instructions("input.txt");
+    }
+
+    /*
+    * Parsing Restrictions:
+    * -'I' = insert
+    * -'D' = delete
+    * -'S' = search
+    * -'P' = print
+     */
+    public static void instructions(String fileName) {
+
+        // Attempt to read the file
+        File file = new File(fileName);
+        System.out.println(file.exists());
+
+        if (!file.exists()) {
+            System.out.println("The file does not exist...\n");
+            System.out.println("Complete...\n-----------------------------");
+            return;
+        }
 
         SortedArrayTable<String> dict1 = new SortedArrayTable<String>(10);
 
-        dict1.insert("c");
-        dict1.insert("d");
-        dict1.insert("e");
-        dict1.insert("b");
-        dict1.insert("a");
-        dict1.insert("asdoij");
-        dict1.insert("z");
-        dict1.print();
+        try {
+            Scanner input = new Scanner(file);
 
-        System.out.println("Finished adding elements...");
+            while(input.hasNext()) {
+                String curr = input.nextLine();
+                System.out.println(curr);
+            }
 
-        dict1.delete("a");
-        dict1.delete("z");
-        dict1.delete("asdoij");
-        dict1.delete("z");
-        dict1.print();
-        System.out.println("Finished deleting elements...");
-
-
-        System.out.println("Complete...\n");
+        } catch (IOException ioe) {
+            System.out.println(ioe.getMessage());
+        }
     }
 }

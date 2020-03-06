@@ -58,10 +58,38 @@ public class SortedArrayTable<T extends Comparable> {
 
         // Return the predecessor and successor of obj if obj would have existed
         try {
-            if(!search(obj)) throw new Element_Not_Found("Element not found");
+            if (!search(obj)) throw new Element_Not_Found("");
         } catch (Element_Not_Found enf) {
+
             System.out.println("Element '" + obj + "' not found");
-            System.out.println("Predecessor: " + " | Successor: ");
+
+            // If the logical size is 1
+            if (size == 1) {
+                if (obj.compareTo(items[0]) < 0)
+                    System.out.println("Predecessor doesn't exist | Successor: '" + items[0] + "'");
+                else
+                    System.out.println("Predecessor: '" + items[0] + "' | Successor doesn't exist");
+            }
+
+            // If the obj is < than the first element
+            else if (obj.compareTo(items[0]) < 0)
+                System.out.println("Predecessor doesn't exist | Successor: '" + items[0] + "'");
+
+                // If the obj is > than the last element
+            else if (obj.compareTo(items[size - 1]) > 0)
+                System.out.println("Predecessor: '" + items[size - 1] + "' | Successor doesn't exist");
+
+                // The obj exists between elements in the array
+            else {
+                for (int i = 0; i < size; i++) {
+                    if (obj.compareTo(items[i]) >= 1) {
+                        if (obj.compareTo(items[i + 1]) < 0) {
+                            System.out.println("Predecessor: '" + items[i] + "' | Successor: '" + items[i + 1] + "'");
+                        }
+                    }
+                }
+            }
+
             return false;
         }
 
@@ -73,23 +101,19 @@ public class SortedArrayTable<T extends Comparable> {
         }
 
         // Find the element, delete it, and shift every element ahead of it to the left
-        for(int i = 0; i < size; i++) {
-            if(obj.equals(items[i])) {
+        for (int i = 0; i < size; i++) {
+            if (obj.equals(items[i])) {
 
                 items[i] = null;
                 size -= 1;
 
-                for(int j = i; j < size+1; j++) {
-                    items[j] = items[j+1];
+                for (int j = i; j < size + 1; j++) {
+                    items[j] = items[j + 1];
                 }
-
 
                 return true;
             }
         }
-
-
-
 
         return false;
     }
