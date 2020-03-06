@@ -1,0 +1,10 @@
+I(“table”)
+I(“chair”)
+I(“chair”)
+I(“university”)
+I(“student”)
+D(“table”)
+D(“book”)
+S(“chair”)
+S(“computer”)
+P
