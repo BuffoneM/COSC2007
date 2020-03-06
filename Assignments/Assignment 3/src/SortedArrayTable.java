@@ -36,20 +36,25 @@ public class SortedArrayTable<T extends Comparable> {
 
         // Insert the object in it's proper location
         for (int i = 0; i < size; i++) {
-            if (obj.equals(items[i])) throw new Duplicate_Item_Found("Duplicate item being inserted: " + obj);
+            try {
+                if (obj.equals(items[i])) throw new Duplicate_Item_Found("Duplicate item being inserted: " + obj);
 
-            // Look for the case where it is bigger than the already existing string
-            if (obj.compareTo(items[i]) >= 1) {
+                // Look for the case where it is bigger than the already existing string
+                if (obj.compareTo(items[i]) >= 1) {
 
-                // Shift the other elements over by 1 element and insert
-                for (int j = items.length - 2; j >= i; j--) {
-                    items[j + 1] = items[j];
+                    // Shift the other elements over by 1 element and insert
+                    for (int j = items.length - 2; j >= i; j--) {
+                        items[j + 1] = items[j];
+                    }
+
+                    items[i + 1] = obj;
+                    size++;
+                    return;
                 }
-
-                items[i + 1] = obj;
-                size++;
-                return;
+            } catch(Duplicate_Item_Found dif) {
+                System.out.println("Duplicate item being inserted: " + obj);
             }
+
         }
     }
 

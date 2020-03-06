@@ -19,7 +19,6 @@ public class TestProgram {
         }*/
 
         // ****** File 1 ******
-
         instructions("input.txt");
     }
 
@@ -34,7 +33,6 @@ public class TestProgram {
 
         // Attempt to read the file
         File file = new File(fileName);
-        System.out.println(file.exists());
 
         if (!file.exists()) {
             System.out.println("The file does not exist...\n");
@@ -42,18 +40,46 @@ public class TestProgram {
             return;
         }
 
-        SortedArrayTable<String> dict1 = new SortedArrayTable<String>(10);
 
         try {
             Scanner input = new Scanner(file);
+            SortedArrayTable<String> dictionary = new SortedArrayTable<String>(100);
 
             while(input.hasNext()) {
                 String curr = input.nextLine();
-                System.out.println(curr);
+                String currWord = "";
+                if(curr.toUpperCase().charAt(0) != 'P') {
+                    currWord = curr.substring(curr.indexOf("(") + 2, curr.indexOf(")") - 1);
+                }
+
+                // Method determination
+                switch(curr.toUpperCase().charAt(0)) {
+                    case 'D':
+                        System.out.println("Deleting: " + currWord);
+                        dictionary.delete(currWord);
+                        break;
+                    case 'I':
+                        System.out.println("Inserting: " + currWord);
+                        dictionary.insert(currWord);
+                        break;
+                    case 'P':
+                        System.out.println("Printing:");
+                        dictionary.print();
+                        break;
+                    case 'S':
+                        System.out.println("Searching for: " + currWord);
+                        dictionary.search(currWord);
+                        break;
+                    default:
+                        System.out.println("Invalid instruction attempted: " + curr);
+                        break;
+                }
             }
 
         } catch (IOException ioe) {
             System.out.println(ioe.getMessage());
         }
+
+        System.out.println("Instructions complete...");
     }
 }
