@@ -5,6 +5,7 @@ I(“university”)
 I(“student”)
 D(“table”)
 D(“book”)
+D("teacher")
 S(“chair”)
 S(“computer”)
 P
