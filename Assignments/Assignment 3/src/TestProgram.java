@@ -1,10 +1,11 @@
 import java.io.*;
+import java.util.Dictionary;
 import java.util.Scanner;
 
 public class TestProgram {
 
     public static void main(String[] args) {
-        /*Scanner in = new Scanner(System.in);
+        Scanner in = new Scanner(System.in);
 
         while (true) {
             System.out.print("Enter a filename (0 to exit): ");
@@ -13,13 +14,9 @@ public class TestProgram {
                 System.out.println("Exiting...");
                 System.exit(0);
             } else {
-                System.out.println();
                 instructions(input);
             }
-        }*/
-
-        // ****** File 1 ******
-        instructions("input.txt");
+        }
     }
 
     /*
@@ -55,7 +52,8 @@ public class TestProgram {
                 if(curr.toUpperCase().charAt(0) != 'P') {
                     currWord = curr.substring(curr.indexOf("(") + 2, curr.indexOf(")") - 1);
                 }
-                System.out.println("------");
+                System.out.print("---");
+
                 // Method determination
                 switch(curr.toUpperCase().charAt(0)) {
                     case 'D':
@@ -72,20 +70,20 @@ public class TestProgram {
                                 if(!elements[1].equals(""))
                                     pw.println(elements[1]);
                             }
-                        } catch(Duplicate_Item_Found dif) {
-                            pw.println("Inserted Duplicate Element");
+                        } catch(Dictionary_Empty dif) {
+                            System.out.println("Cannot delete element because dictionary is empty");
+                            pw.println("Dictionary Empty");
                         }
-
-
                         break;
 
                     case 'I':
-                        System.out.println("Inserting: " + currWord);
 
                         try {
                             dictionary.insert(currWord);
+                            System.out.println("Inserting: " + currWord);
                             pw.println("Inserted Element \"" + currWord + "\"");
                         } catch(Duplicate_Item_Found dif) {
+                            System.out.println("Duplicate element inserted");
                             pw.println("Inserted Duplicate Element");
                         }
                         break;
@@ -106,7 +104,7 @@ public class TestProgram {
                         break;
                 }
             }
-            // Print all of the elements in the file
+            // Print all of the logical elements in the file
             String[] tempArray = dictionary.toArray();
             if(tempArray != null) {
                 for(int i = 0; i < tempArray.length; i++) {

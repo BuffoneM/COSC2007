@@ -1,3 +1,6 @@
+import java.util.Arrays;
+import java.util.Dictionary;
+
 public class SortedArrayTable<T extends Comparable> {
     private final int MAX_SIZE;
     private int size;
@@ -53,8 +56,8 @@ public class SortedArrayTable<T extends Comparable> {
         }
     }
 
-    public String[] delete(T obj) throws Duplicate_Item_Found {
-        if (size == 0) throw new Dictionary_Full("Dictionary is empty");
+    public String[] delete(T obj) throws Dictionary_Empty {
+        if (size == 0) throw new Dictionary_Empty("Dictionary is empty");
         String elements[] = null;
 
         // Return the predecessor and successor of obj if obj would have existed
@@ -127,16 +130,43 @@ public class SortedArrayTable<T extends Comparable> {
         return elements;
     }
 
+    // Binary search implementation
     public boolean search(T obj) {
         if (size == 0) throw new Dictionary_Full("Dictionary is empty");
+
         for (int i = 0; i < size; i++) {
             if (obj.equals(items[i])) {
                 System.out.println("'" + obj + "' (exists at logical position: " + (i + 1) + ")");
                 return true;
             }
         }
+
+        //print();
+        //System.out.println(Arrays.toString(Arrays.copyOfRange(items, 0, size)));
+        // ***************************************** FIGURE OUT STACKOVERFLOW FOR THIS RECURSIVE CALL *************************************************
+        /*if(binarySearch(Arrays.copyOfRange(items, 0, size), 0, size - 1, obj) != -1) {
+            System.out.println("'" + obj + "' (exists at logical position: )");
+            return true;
+        }*/
+
         System.out.println("'" + obj + "' doesn't exist in the dictionary");
         return false;
+    }
+
+    // Geeksforgeeks reference for search
+    public int binarySearch(Object[] array, int left, int right, T searchItem) {
+        if (right >= 1) {
+            int middle = ((right - left) / 2) + left;
+            System.out.println(middle);
+            // Item found
+            if (searchItem.equals(array[middle])) return middle;
+            // Item is in the right side of the array
+            if (searchItem.compareTo(array[middle]) < 0) return binarySearch(array, left, middle - 1, searchItem);
+            // Item is in the left side of the array
+            return binarySearch(array, middle + 1, right, searchItem);
+        }
+        // Item was not found
+        return -1;
     }
 
     public void print() {
@@ -145,16 +175,21 @@ public class SortedArrayTable<T extends Comparable> {
             System.out.print(items[i] + (i == MAX_SIZE - 1 ? "]\n" : ", "));
         }
 
-        System.out.print("\nLogical size print:\n[");
-        for (int i = 0; i < size; i++) {
-            System.out.print(items[i] + (i == size - 1 ? "]\n" : ", "));
+        System.out.print("\nLogical size print:\n");
+        if (size == 0)
+            System.out.println("No elements to print");
+        else {
+            System.out.print("[");
+            for (int i = 0; i < size; i++) {
+                System.out.print(items[i] + (i == size - 1 ? "]\n" : ", "));
+            }
         }
         System.out.println("-------------------------------");
     }
 
     public String[] toArray() {
         String[] array = null;
-        if(size != 0) {
+        if (size != 0) {
             array = new String[size];
             for (int i = 0; i < size; i++) {
                 array[i] = items[i] + "";
@@ -162,6 +197,7 @@ public class SortedArrayTable<T extends Comparable> {
         }
         return array;
     }
+
     public String toString() {
         return "Physical size: " + MAX_SIZE + " | Logical size: " + size;
     }
