@@ -1,0 +1,13 @@
+Inserted Element "table"
+Inserted Element "chair"
+Inserted Duplicate Element
+Inserted Element "university"
+Inserted Element "student"
+Element_Not_Found
+chair
+Element_Not_Found
+student
+Element_Not_Found
+chair
+university
+student

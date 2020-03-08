@@ -1,10 +1,17 @@
+/*
+ * Assignment 3
+ * Michael Buffone
+ * March 7th, 2020
+ *
+ * Table structure implemented by a sorted array using a binary search operation
+ */
 import java.util.Arrays;
 import java.util.Dictionary;
 
 public class SortedArrayTable<T extends Comparable> {
     private final int MAX_SIZE;
     private int size;
-    private Object items[];
+    private Object[] items;
 
     // Constructor
     public SortedArrayTable(int max_size) {
@@ -58,7 +65,7 @@ public class SortedArrayTable<T extends Comparable> {
 
     public String[] delete(T obj) throws Dictionary_Empty {
         if (size == 0) throw new Dictionary_Empty("Dictionary is empty");
-        String elements[] = null;
+        String[] elements = null;
 
         // Return the predecessor and successor of obj if obj would have existed
         if (!search(obj)) {
@@ -134,39 +141,26 @@ public class SortedArrayTable<T extends Comparable> {
     public boolean search(T obj) {
         if (size == 0) throw new Dictionary_Full("Dictionary is empty");
 
-        for (int i = 0; i < size; i++) {
-            if (obj.equals(items[i])) {
-                System.out.println("'" + obj + "' (exists at logical position: " + (i + 1) + ")");
-                return true;
-            }
-        }
-
-        //print();
-        //System.out.println(Arrays.toString(Arrays.copyOfRange(items, 0, size)));
-        // ***************************************** FIGURE OUT STACKOVERFLOW FOR THIS RECURSIVE CALL *************************************************
-        /*if(binarySearch(Arrays.copyOfRange(items, 0, size), 0, size - 1, obj) != -1) {
-            System.out.println("'" + obj + "' (exists at logical position: )");
+        // Binary search the array with the logical size only, not the physical
+        int location = binarySearch(Arrays.copyOfRange(items, 0, size), 0, size - 1, obj);
+        if (location != -1) {
             return true;
-        }*/
-
-        System.out.println("'" + obj + "' doesn't exist in the dictionary");
+        }
         return false;
     }
 
-    // Geeksforgeeks reference for search
     public int binarySearch(Object[] array, int left, int right, T searchItem) {
-        if (right >= 1) {
-            int middle = ((right - left) / 2) + left;
-            System.out.println(middle);
-            // Item found
-            if (searchItem.equals(array[middle])) return middle;
-            // Item is in the right side of the array
-            if (searchItem.compareTo(array[middle]) < 0) return binarySearch(array, left, middle - 1, searchItem);
-            // Item is in the left side of the array
-            return binarySearch(array, middle + 1, right, searchItem);
-        }
-        // Item was not found
-        return -1;
+        // Get middle item
+        int middle = (left + right) / 2;
+        // Item not found
+        if (right < left) return -1;
+        // Item found
+        if (searchItem.equals(array[middle])) return middle;
+        // Item is in the right side of the array
+        if (searchItem.compareTo(array[middle]) < 0) return binarySearch(array, left, middle - 1, searchItem);
+        // Item is in the left side of the array
+        return binarySearch(array, middle + 1, right, searchItem);
+
     }
 
     public void print() {

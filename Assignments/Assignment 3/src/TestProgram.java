@@ -1,8 +1,23 @@
+/*
+ * Assignment 3
+ * Michael Buffone
+ * March 7th, 2020
+ *
+ * A test program that reads data from a file and outputs to two different files
+ * -Data is stored in two data structures (SortedArrayTable and ADT List)
+ */
+
 import java.io.*;
-import java.util.Dictionary;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 public class TestProgram {
+    public static SortedArrayTable<String> dictionaryTable;
+    public static List<String> dictionaryList;
+    public static PrintWriter pwArray = null;
+    public static PrintWriter pwList = null;
+
 
     public static void main(String[] args) {
         Scanner in = new Scanner(System.in);
@@ -19,21 +34,15 @@ public class TestProgram {
         }
     }
 
-    /*
-    * Parsing Restrictions:
-    * -'I' = insert
-    * -'D' = delete
-    * -'S' = search
-    * -'P' = print
-     */
+    // Get instructions from the file
     public static void instructions(String fileName) {
 
         // Attempt to read the file
         File file = new File(fileName);
 
         // Output file parts
-        File outputFile = new File("output.txt");
-        PrintWriter pw = null;
+        File outputFileArray = new File("outputArray.txt");
+        File outputFileList = new File("outputList.txt");
 
         if (!file.exists()) {
             System.out.println("The file does not exist...\n");
@@ -43,81 +52,183 @@ public class TestProgram {
 
         try {
             Scanner input = new Scanner(file);
-            pw = new PrintWriter(outputFile);
-            SortedArrayTable<String> dictionary = new SortedArrayTable<String>(100);
+            // File scanner initialization
+            pwArray = new PrintWriter(outputFileArray);
+            pwList = new PrintWriter(outputFileList);
+            dictionaryTable = new SortedArrayTable<String>(100);
+            dictionaryList = new ArrayList<String>();
 
-            while(input.hasNext()) {
+            while (input.hasNext()) {
                 String curr = input.nextLine();
                 String currWord = "";
-                if(curr.toUpperCase().charAt(0) != 'P') {
+                if (curr.toUpperCase().charAt(0) != 'P') {
                     currWord = curr.substring(curr.indexOf("(") + 2, curr.indexOf(")") - 1);
                 }
                 System.out.print("---");
+                // Compute the operation with the word using SortedArrayTable
+                methodOperationsArray(curr, currWord);
 
-                // Method determination
-                switch(curr.toUpperCase().charAt(0)) {
-                    case 'D':
-                        System.out.println("Deleting: " + currWord);
-                        String[] elements = null;
-                        try {
-                            elements = dictionary.delete(currWord);
-                            if(elements == null)
-                                pw.println("Element \"" + currWord + "\" Deleted");
-                            else {
-                                pw.println("Element_Not_Found");
-                                if(!elements[0].equals(""))
-                                    pw.println(elements[0]);
-                                if(!elements[1].equals(""))
-                                    pw.println(elements[1]);
-                            }
-                        } catch(Dictionary_Empty dif) {
-                            System.out.println("Cannot delete element because dictionary is empty");
-                            pw.println("Dictionary Empty");
-                        }
-                        break;
-
-                    case 'I':
-
-                        try {
-                            dictionary.insert(currWord);
-                            System.out.println("Inserting: " + currWord);
-                            pw.println("Inserted Element \"" + currWord + "\"");
-                        } catch(Duplicate_Item_Found dif) {
-                            System.out.println("Duplicate element inserted");
-                            pw.println("Inserted Duplicate Element");
-                        }
-                        break;
-
-                    case 'P':
-                        System.out.println("Printing:");
-                        dictionary.print();
-                        break;
-
-                    case 'S':
-                        System.out.println("Searching for: " + currWord);
-                        if(dictionary.search(currWord) == false) {
-                            pw.println("Element_Not_Found");
-                        }
-                        break;
-                    default:
-                        System.out.println("Invalid instruction attempted: " + curr);
-                        break;
-                }
             }
-            // Print all of the logical elements in the file
-            String[] tempArray = dictionary.toArray();
-            if(tempArray != null) {
-                for(int i = 0; i < tempArray.length; i++) {
-                    pw.println(tempArray[i]);
-                }
-            }
-            pw.close();
+            pwArray.close();
+            pwList.close();
         } catch (IOException ioe) {
             System.out.println(ioe.getMessage());
         } finally {
-            if(pw != null) pw = null;
+            if (pwArray != null || pwList != null) {
+                pwArray = null;
+                pwList = null;
+            }
         }
 
         System.out.println("Instructions complete...");
+    }
+
+    /*
+     * Parsing Restrictions:
+     * -'I' = insert
+     * -'D' = delete
+     * -'S' = search
+     * -'P' = print
+     */
+    public static void methodOperationsArray(String curr, String currWord) {
+        // Method determination
+        switch (curr.toUpperCase().charAt(0)) {
+            case 'D':
+                System.out.println("Deleting: " + currWord);
+                // Array case
+                String[] elementsArray = null;
+                try {
+                    elementsArray = dictionaryTable.delete(currWord);
+                    if (elementsArray == null)
+                        pwArray.println("Element \"" + currWord + "\" Deleted");
+
+                    else {
+                        pwArray.println("Element_Not_Found");
+                        if (!elementsArray[0].equals(""))
+                            pwArray.println(elementsArray[0]);
+                        if (!elementsArray[1].equals(""))
+                            pwArray.println(elementsArray[1]);
+                    }
+                } catch (Dictionary_Empty dif) {
+                    System.out.println("Cannot delete element because dictionary is empty");
+                    pwArray.println("Dictionary Empty");
+                }
+
+                // List case
+                if(dictionaryList.isEmpty()) {
+                    pwList.println("Dictionary Empty");
+                }
+                else if (dictionaryList.contains(currWord)) {
+                    dictionaryList.remove(currWord);
+                } else {
+                    String[] elementsList = prePostValues(currWord, dictionaryList);
+                    pwList.println("Element_Not_Found");
+                    if (!elementsList[0].equals(""))
+                        pwList.println(elementsList[0]);
+                    if (!elementsList[1].equals(""))
+                        pwList.println(elementsList[1]);
+                }
+
+                break;
+
+            case 'I':
+                // Array case
+                try {
+                    dictionaryTable.insert(currWord);
+                    System.out.println("Inserting: " + currWord);
+                    dictionaryList.add(currWord);
+                    pwArray.println("Inserted Element \"" + currWord + "\"");
+                    pwList.println("Inserted Element \"" + currWord + "\"");
+                } catch (Duplicate_Item_Found dif) {
+                    System.out.println("Duplicate element inserted");
+                    pwArray.println("Inserted Duplicate Element");
+                    pwList.println("Inserted Duplicate Element");
+                }
+
+                break;
+
+            case 'P':
+                // Array case
+                System.out.println("Printing array:");
+                dictionaryTable.print();
+
+                // Print all of the logical elements in the file from the ArrayTable
+                String[] tempArrayTable = dictionaryTable.toArray();
+                if (tempArrayTable != null) {
+                    for (int i = 0; i < tempArrayTable.length; i++) {
+                        pwArray.println(tempArrayTable[i]);
+                    }
+                }
+                pwArray.close();
+
+                // Print all of the logical elements in the file from the ADT List
+                Object[] tempListArray = dictionaryList.toArray();
+                if (tempListArray != null) {
+                    for (int i = 0; i < tempListArray.length; i++) {
+                        pwList.println((String) tempListArray[i]);
+                    }
+                }
+
+                break;
+
+            case 'S':
+                // Array case and list case
+                System.out.println("Searching for: " + currWord);
+                if (!dictionaryTable.search(currWord) && !dictionaryList.contains(currWord)) {
+                    System.out.println("'" + currWord + "' doesn't exist in the dictionary");
+                    pwArray.println("Element_Not_Found");
+                    pwList.println("Element_Not_Found");
+                } else {
+                    System.out.println("'" + currWord + "' exists at logical position: " + (currWord + 1) + "");
+                }
+
+                break;
+            default:
+                System.out.println("Invalid instruction attempted: " + curr);
+                break;
+        }
+    }
+
+    public static String[] prePostValues(String obj, List<String> values) {
+        String[] elements = new String[2];
+        // If the logical size is 1
+        if (values.size() == 1) {
+            if (obj.compareTo(values.get(0)) < 0) {
+                System.out.println("Predecessor doesn't exist | Successor: '" + values.get(0) + "'");
+                elements[0] = "";
+                elements[1] = values.get(0) + "";
+            } else {
+                System.out.println("Predecessor: '" + values.get(0) + "' | Successor doesn't exist");
+                elements[0] = values.get(0) + "";
+                elements[1] = "";
+            }
+        }
+
+        // If the obj is < than the first element
+        else if (obj.compareTo(values.get(0)) < 0) {
+            System.out.println("Predecessor doesn't exist | Successor: '" + values.get(0) + "'");
+            elements[0] = "";
+            elements[1] = values.get(0) + "";
+        }
+        // If the obj is > than the last element
+        else if (obj.compareTo(values.get(values.size() - 1)) > 0) {
+            System.out.println("Predecessor: '" + values.get(values.size() - 1) + "' | Successor doesn't exist");
+            elements[0] = values.get(values.size() - 1) + "";
+            elements[1] = "";
+        }
+
+        // The obj exists between elements in the array
+        else {
+            for (int i = 0; i < values.size(); i++) {
+                if (obj.compareTo(values.get(i)) >= 1) {
+                    if (obj.compareTo(values.get(i + 1)) < 0) {
+                        System.out.println("Predecessor: '" + values.get(i) + "' | Successor: '" + values.get(i + 1) + "'");
+                        elements[0] = values.get(i) + "";
+                        elements[1] = values.get(i + 1) + "";
+                    }
+                }
+            }
+        }
+        return elements;
     }
 }
