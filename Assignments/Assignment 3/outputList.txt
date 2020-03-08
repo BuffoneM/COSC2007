@@ -1,13 +1,17 @@
+Dictionary Empty
 Inserted Element "table"
+Element_Not_Found
+table
+Element_Not_Found
+table
 Inserted Element "chair"
 Inserted Duplicate Element
 Inserted Element "university"
 Inserted Element "student"
+Element "table" Deleted
 Element_Not_Found
 chair
 Element_Not_Found
+chair
 student
-Element_Not_Found
-chair
 university
-student

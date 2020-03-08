@@ -1,4 +1,7 @@
+D("asd")
 I(“table”)
+D("a")
+D("z")
 I(“chair”)
 I(“chair”)
 I(“university”)

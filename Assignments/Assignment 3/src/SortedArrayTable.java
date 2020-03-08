@@ -75,11 +75,9 @@ public class SortedArrayTable<T extends Comparable> {
             // If the logical size is 1
             if (size == 1) {
                 if (obj.compareTo(items[0]) < 0) {
-                    System.out.println("Predecessor doesn't exist | Successor: '" + items[0] + "'");
                     elements[0] = "";
                     elements[1] = items[0] + "";
                 } else {
-                    System.out.println("Predecessor: '" + items[0] + "' | Successor doesn't exist");
                     elements[0] = items[0] + "";
                     elements[1] = "";
                 }
@@ -87,13 +85,11 @@ public class SortedArrayTable<T extends Comparable> {
 
             // If the obj is < than the first element
             else if (obj.compareTo(items[0]) < 0) {
-                System.out.println("Predecessor doesn't exist | Successor: '" + items[0] + "'");
                 elements[0] = "";
                 elements[1] = items[0] + "";
             }
             // If the obj is > than the last element
             else if (obj.compareTo(items[size - 1]) > 0) {
-                System.out.println("Predecessor: '" + items[size - 1] + "' | Successor doesn't exist");
                 elements[0] = items[size - 1] + "";
                 elements[1] = "";
             }
@@ -103,7 +99,6 @@ public class SortedArrayTable<T extends Comparable> {
                 for (int i = 0; i < size; i++) {
                     if (obj.compareTo(items[i]) >= 1) {
                         if (obj.compareTo(items[i + 1]) < 0) {
-                            System.out.println("Predecessor: '" + items[i] + "' | Successor: '" + items[i + 1] + "'");
                             elements[0] = items[i] + "";
                             elements[1] = items[i + 1] + "";
                         }

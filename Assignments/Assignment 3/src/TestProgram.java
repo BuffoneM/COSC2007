@@ -8,9 +8,7 @@
  */
 
 import java.io.*;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Scanner;
+import java.util.*;
 
 public class TestProgram {
     public static SortedArrayTable<String> dictionaryTable;
@@ -104,10 +102,24 @@ public class TestProgram {
 
                     else {
                         pwArray.println("Element_Not_Found");
-                        if (!elementsArray[0].equals(""))
+                        if(!elementsArray[0].equals("") && !elementsArray[1].equals("")) {
+                            System.out.println("Predecessor is '" + elementsArray[0] + "' | Successor is '" + elementsArray[1] + "'");
                             pwArray.println(elementsArray[0]);
-                        if (!elementsArray[1].equals(""))
                             pwArray.println(elementsArray[1]);
+                            break;
+                        }
+                        if (!elementsArray[0].equals("")) {
+                            System.out.println("Predecessor is '" + elementsArray[0] + "' | Successor " +
+                                    ((elementsArray[1] == "") ? "doesn't exist" : "is '" + elementsArray[1] + "'"));
+                            pwArray.println(elementsArray[0]);
+
+                        }
+                        if (!elementsArray[1].equals("")) {
+                            System.out.println("Predecessor " + ((elementsArray[0] == "") ? "doesn't exist" : "is '"
+                                    + elementsArray[0] + "'") + " | Successor is '" + elementsArray[1] + "'");
+                            pwArray.println(elementsArray[1]);
+                        }
+
                     }
                 } catch (Dictionary_Empty dif) {
                     System.out.println("Cannot delete element because dictionary is empty");
@@ -115,14 +127,19 @@ public class TestProgram {
                 }
 
                 // List case
-                if(dictionaryList.isEmpty()) {
+                if (dictionaryList.isEmpty()) {
                     pwList.println("Dictionary Empty");
-                }
-                else if (dictionaryList.contains(currWord)) {
+                } else if (dictionaryList.contains(currWord)) {
                     dictionaryList.remove(currWord);
+                    pwList.println("Element \"" + currWord + "\" Deleted");
                 } else {
                     String[] elementsList = prePostValues(currWord, dictionaryList);
                     pwList.println("Element_Not_Found");
+                    if(!elementsList[0].equals("") && !elementsList[1].equals("")) {
+                        pwList.println(elementsList[0]);
+                        pwList.println(elementsList[1]);
+                        break;
+                    }
                     if (!elementsList[0].equals(""))
                         pwList.println(elementsList[0]);
                     if (!elementsList[1].equals(""))
@@ -137,10 +154,11 @@ public class TestProgram {
                     dictionaryTable.insert(currWord);
                     System.out.println("Inserting: " + currWord);
                     dictionaryList.add(currWord);
+                    Collections.sort(dictionaryList);
                     pwArray.println("Inserted Element \"" + currWord + "\"");
                     pwList.println("Inserted Element \"" + currWord + "\"");
                 } catch (Duplicate_Item_Found dif) {
-                    System.out.println("Duplicate element inserted");
+                    System.out.println("Duplicate element inserted: " + currWord);
                     pwArray.println("Inserted Duplicate Element");
                     pwList.println("Inserted Duplicate Element");
                 }
@@ -179,7 +197,8 @@ public class TestProgram {
                     pwArray.println("Element_Not_Found");
                     pwList.println("Element_Not_Found");
                 } else {
-                    System.out.println("'" + currWord + "' exists at logical position: " + (currWord + 1) + "");
+                    System.out.println("'" + currWord + "' exists at logical position: " +
+                            (dictionaryList.indexOf(currWord) + 1) + "");
                 }
 
                 break;
@@ -194,11 +213,9 @@ public class TestProgram {
         // If the logical size is 1
         if (values.size() == 1) {
             if (obj.compareTo(values.get(0)) < 0) {
-                System.out.println("Predecessor doesn't exist | Successor: '" + values.get(0) + "'");
                 elements[0] = "";
                 elements[1] = values.get(0) + "";
             } else {
-                System.out.println("Predecessor: '" + values.get(0) + "' | Successor doesn't exist");
                 elements[0] = values.get(0) + "";
                 elements[1] = "";
             }
@@ -206,13 +223,11 @@ public class TestProgram {
 
         // If the obj is < than the first element
         else if (obj.compareTo(values.get(0)) < 0) {
-            System.out.println("Predecessor doesn't exist | Successor: '" + values.get(0) + "'");
             elements[0] = "";
             elements[1] = values.get(0) + "";
         }
         // If the obj is > than the last element
         else if (obj.compareTo(values.get(values.size() - 1)) > 0) {
-            System.out.println("Predecessor: '" + values.get(values.size() - 1) + "' | Successor doesn't exist");
             elements[0] = values.get(values.size() - 1) + "";
             elements[1] = "";
         }
@@ -222,7 +237,6 @@ public class TestProgram {
             for (int i = 0; i < values.size(); i++) {
                 if (obj.compareTo(values.get(i)) >= 1) {
                     if (obj.compareTo(values.get(i + 1)) < 0) {
-                        System.out.println("Predecessor: '" + values.get(i) + "' | Successor: '" + values.get(i + 1) + "'");
                         elements[0] = values.get(i) + "";
                         elements[1] = values.get(i + 1) + "";
                     }
