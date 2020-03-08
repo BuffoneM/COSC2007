@@ -106,15 +106,14 @@ public class TestProgram {
                             System.out.println("Predecessor is '" + elementsArray[0] + "' | Successor is '" + elementsArray[1] + "'");
                             pwArray.println(elementsArray[0]);
                             pwArray.println(elementsArray[1]);
-                            break;
                         }
-                        if (!elementsArray[0].equals("")) {
+                        else if (!elementsArray[0].equals("")) {
                             System.out.println("Predecessor is '" + elementsArray[0] + "' | Successor " +
                                     ((elementsArray[1] == "") ? "doesn't exist" : "is '" + elementsArray[1] + "'"));
                             pwArray.println(elementsArray[0]);
 
                         }
-                        if (!elementsArray[1].equals("")) {
+                        else if (!elementsArray[1].equals("")) {
                             System.out.println("Predecessor " + ((elementsArray[0] == "") ? "doesn't exist" : "is '"
                                     + elementsArray[0] + "'") + " | Successor is '" + elementsArray[1] + "'");
                             pwArray.println(elementsArray[1]);

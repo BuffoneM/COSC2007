@@ -12,6 +12,9 @@ Element "table" Deleted
 Element_Not_Found
 chair
 Element_Not_Found
+student
+university
+Element_Not_Found
 chair
 student
 university
