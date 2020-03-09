@@ -60,6 +60,7 @@ public class TestProgram {
                 String curr = input.nextLine();
                 String currWord = "";
                 if (curr.toUpperCase().charAt(0) != 'P') {
+                    // Get the word in the quotes within the brackets
                     currWord = curr.substring(curr.indexOf("(") + 2, curr.indexOf(")") - 1);
                 }
                 System.out.print("---");
@@ -78,7 +79,7 @@ public class TestProgram {
             }
         }
 
-        System.out.println("Instructions complete...");
+        System.out.println("Instructions complete...\n");
     }
 
     /*
@@ -97,23 +98,22 @@ public class TestProgram {
                 String[] elementsArray = null;
                 try {
                     elementsArray = dictionaryTable.delete(currWord);
+                    // The array won't have anything in it because the item CAN be deleted
                     if (elementsArray == null)
                         pwArray.println("Element \"" + currWord + "\" Deleted");
 
                     else {
                         pwArray.println("Element_Not_Found");
-                        if(!elementsArray[0].equals("") && !elementsArray[1].equals("")) {
+                        if (!elementsArray[0].equals("") && !elementsArray[1].equals("")) {
                             System.out.println("Predecessor is '" + elementsArray[0] + "' | Successor is '" + elementsArray[1] + "'");
                             pwArray.println(elementsArray[0]);
                             pwArray.println(elementsArray[1]);
-                        }
-                        else if (!elementsArray[0].equals("")) {
+                        } else if (!elementsArray[0].equals("")) {
                             System.out.println("Predecessor is '" + elementsArray[0] + "' | Successor " +
                                     ((elementsArray[1] == "") ? "doesn't exist" : "is '" + elementsArray[1] + "'"));
                             pwArray.println(elementsArray[0]);
 
-                        }
-                        else if (!elementsArray[1].equals("")) {
+                        } else if (!elementsArray[1].equals("")) {
                             System.out.println("Predecessor " + ((elementsArray[0] == "") ? "doesn't exist" : "is '"
                                     + elementsArray[0] + "'") + " | Successor is '" + elementsArray[1] + "'");
                             pwArray.println(elementsArray[1]);
@@ -134,7 +134,7 @@ public class TestProgram {
                 } else {
                     String[] elementsList = prePostValues(currWord, dictionaryList);
                     pwList.println("Element_Not_Found");
-                    if(!elementsList[0].equals("") && !elementsList[1].equals("")) {
+                    if (!elementsList[0].equals("") && !elementsList[1].equals("")) {
                         pwList.println(elementsList[0]);
                         pwList.println(elementsList[1]);
                         break;
@@ -169,7 +169,7 @@ public class TestProgram {
                 System.out.println("Printing array:");
                 dictionaryTable.print();
 
-                // Print all of the logical elements in the file from the ArrayTable
+                // Write all of the logical elements into the file from the ArrayTable
                 String[] tempArrayTable = dictionaryTable.toArray();
                 if (tempArrayTable != null) {
                     for (int i = 0; i < tempArrayTable.length; i++) {
@@ -178,7 +178,7 @@ public class TestProgram {
                 }
                 pwArray.close();
 
-                // Print all of the logical elements in the file from the ADT List
+                // Print all of the logical elements into the file from the ADT List
                 Object[] tempListArray = dictionaryList.toArray();
                 if (tempListArray != null) {
                     for (int i = 0; i < tempListArray.length; i++) {
@@ -207,6 +207,7 @@ public class TestProgram {
         }
     }
 
+    // Get the predecessor and successor values for the object
     public static String[] prePostValues(String obj, List<String> values) {
         String[] elements = new String[2];
         // If the logical size is 1

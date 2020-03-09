@@ -1,0 +1,10 @@
+I(“table”) // I for insert
+I(“chair”)
+I(“chair”)
+I(“university”)
+I(“student”)
+D(“table”) // D is used for delete
+D(“book”)
+S(“chair”) // S for searching
+S(“computer”)
+P

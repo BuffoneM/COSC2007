@@ -187,6 +187,7 @@ public class SortedArrayTable<T extends Comparable> {
         return array;
     }
 
+    @Override
     public String toString() {
         return "Physical size: " + MAX_SIZE + " | Logical size: " + size;
     }
