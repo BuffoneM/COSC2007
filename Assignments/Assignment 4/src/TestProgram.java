@@ -32,29 +32,22 @@ public class TestProgram {
         try {
             // Read the line and store it in temp
             Scanner input = new Scanner(file);
-            String tempString = input.nextLine();
 
-            // For the entire string:
-            // -If the char is a space, skip
-            // -If the char is a number, concatenate it to the current number
-            // -Otherwise parse it and add it to the 2-3 Tree
-            String currNumber = "";
-            for(int i = 0; i < tempString.length(); i++) {
-                if(tempString.charAt(i) == ' ') continue;
-                if(tempString.charAt(i) >= '0' && tempString.charAt(i) <= '9') {
-                    currNumber = currNumber + tempString.charAt(i);
-                    continue;
-                }
-                else {
-                    // Tempnum holds the interger that will be added to the tree
-                    int tempNum = Integer.parseInt(currNumber);
-                    System.out.println(tempNum);
-                    
+            String tempString;
+            Tree23<Integer> tree = new Tree23<Integer>();
 
-                    // Reset currNumber for the next iteration
-                    currNumber = "";
-                }
+            // -Read the number, parse the number, and add it to the tree
+            while(input.hasNext()) {
+                int tempNum = Integer.parseInt(input.next().replace(",", ""));
+                tree.add(tempNum);
             }
+
+            // Pre-order traversal print
+            tree.postOrderPrint();
+
+            // Height of the tree
+
+            // Find each value
 
 
         } catch (IOException ioe) {
