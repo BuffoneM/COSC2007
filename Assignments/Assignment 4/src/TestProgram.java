@@ -35,20 +35,27 @@ public class TestProgram {
 
             String tempString;
             Tree23<Integer> tree = new Tree23<Integer>();
+            ArrayList<Integer> fileNums = new ArrayList<Integer>();
 
             // -Read the number, parse the number, and add it to the tree
             while(input.hasNext()) {
                 int tempNum = Integer.parseInt(input.next().replace(",", ""));
                 tree.add(tempNum);
+                fileNums.add(tempNum);
             }
 
             // Pre-order traversal print
-            tree.postOrderPrint();
+            System.out.println("Pre order traversal: ");
+            tree.preOrderPrint();
 
             // Height of the tree
+            System.out.println("\nTree height: " + tree.height());
 
             // Find each value
-
+            System.out.println("\nFinding values:");
+            for(int i = 0; i < fileNums.size(); i++) {
+                tree.find(fileNums.get(i));
+            }
 
         } catch (IOException ioe) {
             System.out.println(ioe.getMessage());
