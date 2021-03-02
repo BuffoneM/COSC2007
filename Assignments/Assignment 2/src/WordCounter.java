@@ -54,6 +54,7 @@ public class WordCounter {
 
         // Create the binary tree from the file
         BinaryTree wordsToAdd = parseFile(file);
+        System.out.println("There are " + wordsToAdd.countNodesTotal() + " total words in the file.");
         System.out.println("There are " + wordsToAdd.countNodes() + " unique words in the file.");
         int num4l = wordsToAdd.countFourLetters();
         System.out.println("There " + (num4l == 1 ? "is " + num4l + " unique four letter word"

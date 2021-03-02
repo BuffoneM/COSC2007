@@ -108,6 +108,17 @@ public class BinaryTree {
 		return 0;
 	}
 
+	public int countNodesTotal() {
+		return countNodesTotal(root);
+	}
+
+	private int countNodesTotal(WordNode rootNode) {
+		if (rootNode != null) {
+			return rootNode.getCount() + countNodesTotal(rootNode.getLeft()) + countNodesTotal(rootNode.getRight());
+		}
+		return 0;
+	}
+
 	// Count 4 Letter Word Methods
 	// Post order traversal
 	public int countFourLetters() {

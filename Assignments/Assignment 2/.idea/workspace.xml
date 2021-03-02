@@ -3,6 +3,12 @@
   <component name="ChangeListManager">
     <list default="true" id="3955d64d-edda-40e4-9913-1b32359d197c" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Assignment 2/BinaryTree$WordNode.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Assignment 2/BinaryTree$WordNode.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Assignment 2/BinaryTree.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Assignment 2/BinaryTree.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Assignment 2/TreeException.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Assignment 2/TreeException.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Assignment 2/WordCounter.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Assignment 2/WordCounter.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/BinaryTree.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/BinaryTree.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/WordCounter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/WordCounter.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -18,14 +24,14 @@
   </component>
   <component name="ProjectViewState">
     <option name="flattenPackages" value="true" />
-    <option name="showExcludedFiles" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../../COSC3127/Assignments/Assignment 2" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="restartRequiresConfirmation" value="false" />
   </component>
   <component name="RecentsManager">
@@ -42,12 +48,24 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
+      <option name="arquillianRunConfiguration">
+        <value>
+          <option name="containerStateName" value="" />
+        </value>
+      </option>
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <recent_temporary>
       <list>
         <item itemvalue="Application.WordCounter" />
       </list>
     </recent_temporary>
   </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="SvnConfiguration">
     <configuration />
   </component>
@@ -64,41 +82,15 @@
       <workItem from="1582159402525" duration="971000" />
       <workItem from="1582218831920" duration="599000" />
       <workItem from="1582341341014" duration="24000" />
+      <workItem from="1614008611778" duration="148000" />
+      <workItem from="1614291385766" duration="230000" />
+      <workItem from="1614297939119" duration="49000" />
+      <workItem from="1614714661157" duration="90000" />
+      <workItem from="1614716710272" duration="147000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
-    <option name="version" value="1" />
-  </component>
-  <component name="WindowStateProjectService">
-    <state x="985" y="370" key="FileChooserDialogImpl" timestamp="1582341364350">
-      <screen x="0" y="0" width="2560" height="1400" />
-    </state>
-    <state x="739" y="275" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1581382375524" />
-    <state x="985" y="370" key="FileChooserDialogImpl/0.0.2560.1400/2560.360.1920.1040@0.0.2560.1400" timestamp="1582341364350" />
-    <state width="1513" height="857" key="GridCell.Tab.0.bottom" timestamp="1582161837734">
-      <screen x="0" y="0" width="2560" height="1400" />
-    </state>
-    <state width="551" height="495" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1581382395335" />
-    <state width="1513" height="857" key="GridCell.Tab.0.bottom/0.0.2560.1400/2560.360.1920.1040@0.0.2560.1400" timestamp="1582161837734" />
-    <state width="1513" height="857" key="GridCell.Tab.0.center" timestamp="1582161837734">
-      <screen x="0" y="0" width="2560" height="1400" />
-    </state>
-    <state width="551" height="495" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1581382395335" />
-    <state width="1513" height="857" key="GridCell.Tab.0.center/0.0.2560.1400/2560.360.1920.1040@0.0.2560.1400" timestamp="1582161837734" />
-    <state width="1513" height="857" key="GridCell.Tab.0.left" timestamp="1582161837734">
-      <screen x="0" y="0" width="2560" height="1400" />
-    </state>
-    <state width="551" height="495" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1581382395335" />
-    <state width="1513" height="857" key="GridCell.Tab.0.left/0.0.2560.1400/2560.360.1920.1040@0.0.2560.1400" timestamp="1582161837734" />
-    <state width="1513" height="857" key="GridCell.Tab.0.right" timestamp="1582161837734">
-      <screen x="0" y="0" width="2560" height="1400" />
-    </state>
-    <state width="551" height="495" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1581382395335" />
-    <state width="1513" height="857" key="GridCell.Tab.0.right/0.0.2560.1400/2560.360.1920.1040@0.0.2560.1400" timestamp="1582161837734" />
-    <state x="342" y="141" key="new project wizard" timestamp="1581382394290">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state x="342" y="141" key="new project wizard/0.0.1920.1040@0.0.1920.1040" timestamp="1581382394290" />
+    <option name="version" value="3" />
   </component>
 </project>
